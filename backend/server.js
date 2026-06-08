@@ -20,7 +20,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-const allowedOrigins = ["http://localhost:5173", "http://127.0.0.1:5173"];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+  "https://yusratuitionlab-elu5.vercel.app",
+  "https://yusratuitionlab.onrender.com",
+];
 app.use(
   cors({
     origin: (origin, callback) => {

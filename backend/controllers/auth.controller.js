@@ -22,7 +22,7 @@ const sendTokenResponse = (user, statusCode, res) => {
     httpOnly: true,
     expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
     secure: process.env.COOKIE_SECURE === "true",
-    sameSite: "lax",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
   };
 
   res.cookie("token", token, cookieOptions);
