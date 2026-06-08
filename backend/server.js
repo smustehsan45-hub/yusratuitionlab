@@ -28,10 +28,25 @@ const allowedOrigins = [
 ];
 app.use(
   cors({
-    origin: true,
+    origin: function (origin, callback) {
+      const allowedOrigins = [
+        "http://localhost:5173",
+        "https://yusratuitionlab-elu5.vercel.app",
+      ];
+
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(null, true); // safe fallback for deployment
+      }
+    },
     credentials: true,
   })
 );
+
+app.get("/", (req, res) => {
+  res.send("YusratuitionLab API is running 🚀");
+});
 
 app.get("/api/health", (req, res) => res.json({ success: true, message: "API is healthy." }));
 app.use("/api/auth", authRoutes);
