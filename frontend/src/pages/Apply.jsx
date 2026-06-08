@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../styles/Auth.css";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+const API_URL = import.meta.env.VITE_API_URL || "https://yusratuitionlab.onrender.com/api";
 
 const courseOptions = {
   tutor: ["English", "Math", "Science", "Primary Level", "Secondary Level"],
